@@ -28,10 +28,12 @@ def reset_timer():
 # Function to either append or anallyze the packets depending on the specification of the window
 def packet_callback(packet):
     
+    if( len(packet_buffer)%1000==0):
+        print("Packets sniffed: "+str(len(packet_buffer)))
     if IP in packet:
             packet_buffer.append(packet)
 
-    if (len(packet_buffer) == MaxPackets or check_timer() >= TimeWindows):
+    if (len(packet_buffer) == MaxPackets or check_timer() >= TimeWindows) and len(packet_buffer) > 0:
  
         wrpcap('buffer.pcap', packet_buffer)
         packet_buffer.clear()
@@ -70,22 +72,24 @@ def extractFlowFeatures():
 
     df['start-time'] = pd.to_datetime(df['start-time'])
     df['end-time'] = pd.to_datetime(df['end-time'])
-    le = LabelEncoder()
-    X = df.drop(columns=['start-time','end-time', 'sip','dip','dp','iflags','uflags','ruflags','riflags','isn','risn','end-reason'])
+    X = df.drop(columns=['start-time','end-time', 'sip','dip','dp','iflags','uflags','ruflags','riflags','isn','risn','end-reason','sp'])
     classifyFlow(X)
 
 # Function to classify the flows
 def classifyFlow(X):
     y_pred = model.predict(X)
-
     for i in range(len(y_pred)):
         if y_pred[i] == True:
             logging.warning(X.iloc[i])
-            
+            counter += 1
+
+
+         
         
 
     reset_timer()
-    exit()
+
+
 
 
 
