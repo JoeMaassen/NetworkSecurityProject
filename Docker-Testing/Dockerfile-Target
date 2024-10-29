@@ -1,0 +1,16 @@
+FROM nsa_v2:latest
+LABEL authors="joe"
+
+COPY "IDS.py" "opt/app/IDS.py"
+COPY "requirements.txt" "opt/app/requirements.txt"
+COPY "trained_model.pkl" "opt/app/trained_model.pkl"
+COPY "label_encoder.pkl" "opt/app/label_encoder.pkl"
+WORKDIR /opt/app
+
+RUN apt-get install -y python3
+RUN apt-get install -y python3-pip
+RUN pip install -r requirements.txt --break-system-packages
+
+
+
+CMD ["tail", "-f", "/dev/null"]
