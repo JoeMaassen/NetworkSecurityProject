@@ -9,6 +9,7 @@ from sklearn.preprocessing import OneHotEncoder, LabelEncoder
 import pickle
 import subprocess
 import logging
+from imblearn.ensemble import BalancedRandomForestClassifier
 
 # Function to check the timer
 def check_timer():
@@ -77,17 +78,16 @@ def extractFlowFeatures():
 
 # Function to classify the flows
 def classifyFlow(X):
+    print("Classifying flows...")
+    counter = 0
     y_pred = model.predict(X)
     for i in range(len(y_pred)):
         if y_pred[i] == True:
             logging.warning(X.iloc[i])
             counter += 1
-
-
-         
-        
-
+    print(counter)
     reset_timer()
+    exit()
 
 
 
