@@ -3,9 +3,9 @@ docker image load -i Docker-Testing/Docker-Image.tar
 docker compose rm -f
 docker compose pull
 
-cp ../IDS.py IDS.py
-cp ../trained_model.pkl trained_model.pkl
-cp ../label_encoder.pkl label_encoder.pkl
+cp ../IDS/IDS.py IDS.py
+cp ../PreTrainedModels/trained_model_srf.pkl trained_model.pkl # Here change the path to get a diffrent model
+cp ../PreTrainedModels/label_encoder.pkl label_encoder.pkl
 cp ../Data/AttackSimulationDataSet.pcap AttackSimulationDataSet.pcap
 docker compose up --build -d
 rm IDS.py
