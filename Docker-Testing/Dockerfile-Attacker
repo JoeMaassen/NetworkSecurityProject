@@ -1,0 +1,7 @@
+FROM nsa_v2:latest
+LABEL authors="joe"
+
+COPY "AttackSimulationDataSet.pcap" "opt/app/AttackSimulationDataSet.pcap"
+WORKDIR /opt/app
+
+CMD ["tail", "-f", "/dev/null"]
