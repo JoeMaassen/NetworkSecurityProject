@@ -15,7 +15,7 @@ You can change the parameters for the commands in the attacker.sh and target.sh 
 ## Small Packet Window
 In attacker.sh:
 ```
-tcpreplay -i eth0 --mbps=60 -l 1000 smallerAttackSimulation.pcap.pcap'
+tcpreplay -i eth0 --mbps=60 -l 1000 smallerAttackSimulation.pcap.pcap
 ```
 
 In target.sh:
