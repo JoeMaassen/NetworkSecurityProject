@@ -12,7 +12,7 @@ You can change the parameters for the commands in the attacker.sh and target.sh 
 
 # Our Parameters
 
-## Small Window
+## Small Packet Window
 In attacker.sh:
 ```
 tcpreplay -i eth0 --mbps=60 -l 1000 smallerAttackSimulation.pcap.pcap'
@@ -23,7 +23,7 @@ In target.sh:
 python3 IDS.py -m 10000 -t 10
 ```
 
-## Large Window
+## Large Packet Window
 In attacker.sh:
 ```
 tcpreplay -i eth0 --mbps=60 -l 1000 AttackSimulationDataSet.pcap'
@@ -34,7 +34,7 @@ In target.sh:
 python3 IDS.py -m 500000 -t 200
 ```
 
-Results might be sammler than documentation. We know that the this data contains benign flows but the IDS assumes that everything is malicious for calculating the results so the results are aproximates.
+Results might be smaller than documentation. We know that the this data contains benign flows but the IDS assumes that everything is malicious for calculating the results so the results are aproximates.
 
 
 # Known issues and Solutions
