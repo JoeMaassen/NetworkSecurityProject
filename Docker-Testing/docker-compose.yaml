@@ -1,0 +1,25 @@
+services:
+  target:
+    build:
+      context: .
+      dockerfile: Dockerfile-Target
+    container_name: target
+    networks:
+      host_net:
+        ipv4_address: 172.23.0.10
+
+  attacker:
+    build:
+      context: .
+      dockerfile: Dockerfile-Attacker
+    container_name: attacker
+    networks:
+      host_net:
+        ipv4_address: 172.23.0.20
+
+networks:
+  host_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.23.0.0/24
