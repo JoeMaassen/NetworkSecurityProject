@@ -2,6 +2,7 @@ FROM nsa_v2:latest
 LABEL authors="joe"
 
 COPY "AttackSimulationDataSet.pcap" "opt/app/AttackSimulationDataSet.pcap"
+COPY "smallerAttackSimulation.pcap" "opt/app/smallerAttackSimulation.pcap"
 WORKDIR /opt/app
 
 CMD ["tail", "-f", "/dev/null"]
