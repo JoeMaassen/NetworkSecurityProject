@@ -1,4 +1,4 @@
-The script file contained takes as input the kitsune dataset for ssdp flood in pcap format (that can be downloaded [here](https://www.kaggle.com/datasets/ymirsky/network-attack-dataset-kitsune?select=SSDP+Flood)) and returns (amongst other files):
+The script file contained takes as input the kitsune dataset for ssdp flood in raw pcap format (that can be downloaded [here](https://www.kaggle.com/datasets/ymirsky/network-attack-dataset-kitsune?select=SSDP+Flood)) and returns (amongst other files):
 1. **TrainingDataset.csv** which is the CSV expected by our data processing script.
 2. **smallerAttackSimulation** which is the pcap used to perform the smaller attack simulation as described in the report.
 3. **AttackSimulationDataSet** which is the pcap file used to perform the full attack simulation as described in the report.
