@@ -1,5 +1,5 @@
 #!/bin/sh
-docker image load -i Docker-Testing/Docker-Image.tar
+docker image load -i Docker-Image.tar
 docker compose rm -f
 docker compose pull
 
