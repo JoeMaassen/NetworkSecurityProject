@@ -74,6 +74,8 @@ def extractFlowFeatures():
     df['start-time'] = pd.to_datetime(df['start-time'])
     df['end-time'] = pd.to_datetime(df['end-time'])
     X = df.drop(columns=['start-time','end-time', 'sip','dip','dp','iflags','uflags','ruflags','riflags','isn','risn','end-reason','sp'])
+    if not 'proto' in model.feature_names_in_ :
+        X = X.drop(columns=['proto'])
     classifyFlow(X)
 
 # Function to classify the flows
@@ -138,5 +140,7 @@ else:
 print("Configuration:")
 print("Time window: "+str(TimeWindows))
 print("Max packets: "+str(MaxPackets))
+
+
 sniff(iface='eth0', prn=packet_callback, store=0)  # Specify the correct interface
 # sniff(offline = 'capture.pcap', prn=packet_callback, store=0)
