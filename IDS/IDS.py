@@ -87,7 +87,6 @@ def classifyFlow(X):
             counter += 1
     print(counter)
     reset_timer()
-    exit()
 
 
 
