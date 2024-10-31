@@ -78,6 +78,8 @@ def extractFlowFeatures():
 
 # Function to classify the flows
 def classifyFlow(X):
+    if len(X) == 0:
+        return
     print("Classifying flows...")
     counter = 0
     y_pred = model.predict(X)
@@ -85,7 +87,8 @@ def classifyFlow(X):
         if y_pred[i] == True:
             logging.warning(X.iloc[i])
             counter += 1
-    print(counter)
+    print("Number of malicious flows: "+str(counter))
+    print("We assume all flows are malicious and obtain the following accuracy: "+str(counter/len(X)))
     reset_timer()
 
 
